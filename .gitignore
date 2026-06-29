@@ -1,7 +1,12 @@
 node_modules/
+backend/node_modules/
+
 .env
-backend/uploads/*
-!backend/uploads/.gitkeep
-*.log
-.DS_Store
-Thumbs.db
+backend/.env
+
+uploads/
+
+npm-debug.log
+
+.env.local
+.env.production
