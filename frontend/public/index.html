@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EPSILIUS — Herramientas & Programas</title>
+  <meta name="description" content="Plataforma de herramientas, programas y extensiones creadas por EPSILIUS. Comprá, descargá y colaborá.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="navbar">
+  <div class="nav-logo" onclick="showPage('home')" style="cursor:pointer">⚡ EPSILIUS</div>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('home')" class="active" id="nav-home">Inicio</a>
+    <a href="#" onclick="showPage('store')" id="nav-store">Tienda</a>
+    <a href="#" onclick="showPage('chat-page')" id="nav-chat">Chat</a>
+    <a href="#" onclick="showPage('contact-page')" id="nav-contact">Contacto</a>
+    <a href="#" onclick="showPage('admin-page')" id="nav-admin" style="display:none">Admin</a>
+  </div>
+  <div class="nav-actions">
+    <div id="user-info" style="display:none">
+      <div class="avatar" id="nav-avatar">?</div>
+      <span id="nav-username"></span>
+      <button class="btn btn-outline btn-sm" onclick="logout()">Salir</button>
+    </div>
+    <div id="auth-buttons">
+      <button class="btn btn-outline btn-sm" onclick="openModal('login-modal')">Ingresar</button>
+      <button class="btn btn-primary btn-sm" onclick="openModal('register-modal')">Registrarse</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ PÁGINA INICIO ═══════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-badge">⚡ Plataforma oficial de EPSILIUS</div>
+    <h1>Herramientas creadas<br>para <span>potenciar tu trabajo</span></h1>
+    <p>Programas, extensiones y archivos listos para usar. Descargá, instalá y sacá el máximo provecho de cada herramienta.</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary" onclick="showPage('store')" style="font-size:1rem;padding:0.75rem 1.75rem">
+        🛍️ Ver herramientas
+      </button>
+      <button class="btn btn-outline" onclick="showPage('chat-page')" style="font-size:1rem;padding:0.75rem 1.75rem">
+        💬 Comunidad
+      </button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="stat-products">0</div><div class="stat-label">Herramientas</div></div>
+      <div class="stat"><div class="stat-num" id="stat-users">0</div><div class="stat-label">Usuarios</div></div>
+      <div class="stat"><div class="stat-num" id="stat-downloads">0</div><div class="stat-label">Descargas</div></div>
+    </div>
+  </div>
+
+  <!-- Destacados -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Lo mejor</div>
+      <h2>Herramientas destacadas</h2>
+      <p>Las más populares de la plataforma</p>
+    </div>
+    <div class="products-grid" id="featured-grid">
+      <div style="grid-column:1/-1;text-align:center;color:var(--text-dim);padding:3rem">
+        Cargando herramientas…
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <button class="btn btn-outline" onclick="showPage('store')">Ver todas las herramientas →</button>
+    </div>
+  </section>
+
+  <!-- Por qué EPSILIUS -->
+  <section style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="section-header">
+      <div class="eyebrow">¿Por qué EPSILIUS?</div>
+      <h2>Todo en un solo lugar</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto;">
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+        <div style="font-size:2rem;margin-bottom:0.75rem">🔧</div>
+        <h3 style="font-weight:700;margin-bottom:0.35rem">Herramientas reales</h3>
+        <p style="color:var(--text-dim);font-size:0.85rem">Programas funcionales listos para usar, no demos ni versiones recortadas.</p>
+      </div>
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+        <div style="font-size:2rem;margin-bottom:0.75rem">💬</div>
+        <h3 style="font-weight:700;margin-bottom:0.35rem">Comunidad activa</h3>
+        <p style="color:var(--text-dim);font-size:0.85rem">Chat en vivo, comentarios y colaboración para mejorar cada herramienta.</p>
+      </div>
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+        <div style="font-size:2rem;margin-bottom:0.75rem">🔒</div>
+        <h3 style="font-weight:700;margin-bottom:0.35rem">Pago seguro</h3>
+        <p style="color:var(--text-dim);font-size:0.85rem">Pagá con Mercado Pago de forma simple y segura desde cualquier país.</p>
+      </div>
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+        <div style="font-size:2rem;margin-bottom:0.75rem">🌍</div>
+        <h3 style="font-weight:700;margin-bottom:0.35rem">Para todo el mundo</h3>
+        <p style="color:var(--text-dim);font-size:0.85rem">Disponible desde cualquier país. Descargá y usá donde quieras.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════ PÁGINA TIENDA ═══════════ -->
+<div class="page" id="page-store">
+  <section style="padding-top:3rem">
+    <div class="section-header">
+      <div class="eyebrow">Catálogo completo</div>
+      <h2>Todas las herramientas</h2>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Buscar herramientas, programas, extensiones…" oninput="searchProducts()">
+      <button class="btn btn-primary" onclick="searchProducts()">Buscar</button>
+    </div>
+    <div class="filters" id="category-filters">
+      <button class="filter-btn active" onclick="filterCategory('', this)">Todos</button>
+      <button class="filter-btn" onclick="filterCategory('programa', this)">🖥️ Programas</button>
+      <button class="filter-btn" onclick="filterCategory('extension', this)">🧩 Extensiones</button>
+      <button class="filter-btn" onclick="filterCategory('herramienta', this)">🔧 Herramientas</button>
+      <button class="filter-btn" onclick="filterCategory('archivo', this)">📁 Archivos</button>
+      <button class="filter-btn" onclick="filterCategory('otro', this)">✨ Otro</button>
+    </div>
+    <div class="products-grid" id="store-grid">
+      <div style="grid-column:1/-1;text-align:center;color:var(--text-dim);padding:3rem">Cargando…</div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════ PÁGINA DETALLE PRODUCTO ═══════════ -->
+<div class="page" id="page-product">
+  <section style="padding-top:3rem">
+    <button class="btn btn-outline btn-sm" onclick="showPage('store')" style="margin-bottom:2rem">← Volver a la tienda</button>
+    <div class="product-detail" id="product-detail-content"></div>
+    <div style="margin-top:3rem">
+      <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem">Comentarios y reseñas</h3>
+      <div id="comment-form-container"></div>
+      <div class="comments-list" id="comments-list"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════ PÁGINA CHAT ═══════════ -->
+<div class="page" id="page-chat-page">
+  <section style="max-width:800px;padding-top:3rem">
+    <div class="section-header">
+      <div class="eyebrow">Comunidad en vivo</div>
+      <h2>Chat de EPSILIUS</h2>
+      <p>Hablá con otros usuarios, pedí ayuda, compartí ideas</p>
+    </div>
+    <div class="chat-container">
+      <div class="chat-header">
+        <span style="font-weight:700">💬 Chat general</span>
+        <span id="online-count" style="font-size:0.8rem;color:var(--text-dim)"><span class="online-dot"></span>0 en línea</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div style="text-align:center;color:var(--text-dim);padding:2rem;font-size:0.85rem">
+          Cargando mensajes…
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Escribí un mensaje… (Enter para enviar)" maxlength="500" onkeydown="if(event.key==='Enter')sendChatMsg()">
+        <button class="btn btn-primary" onclick="sendChatMsg()">Enviar</button>
+      </div>
+    </div>
+    <p style="font-size:0.8rem;color:var(--text-dim);margin-top:0.75rem;text-align:center">
+      ℹ️ El chat es público. Registrate para participar.
+    </p>
+  </section>
+</div>
+
+<!-- ═══════════ PÁGINA CONTACTO ═══════════ -->
+<div class="page" id="page-contact-page">
+  <section style="max-width:700px;padding-top:3rem">
+    <div class="section-header">
+      <div class="eyebrow">Escribinos</div>
+      <h2>Contacto</h2>
+      <p>Tenés una consulta, querés colaborar o reportar algo? Envianos un mensaje.</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:2rem">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" id="contact-name" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="contact-email" placeholder="tu@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Asunto</label>
+        <input type="text" id="contact-subject" placeholder="¿De qué se trata?">
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea id="contact-message" placeholder="Escribí tu mensaje acá…" rows="5"></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="sendContact()" style="width:100%">📨 Enviar mensaje</button>
+    </div>
+
+    <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center">
+        <div style="font-size:1.5rem;margin-bottom:0.35rem">📧</div>
+        <div style="font-size:0.8rem;color:var(--text-dim)">Email directo</div>
+        <a href="mailto:epsiliusoficial@gmail.com" style="font-size:0.85rem">epsiliusoficial@gmail.com</a>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center">
+        <div style="font-size:1.5rem;margin-bottom:0.35rem">💳</div>
+        <div style="font-size:0.8rem;color:var(--text-dim)">Mercado Pago</div>
+        <a href="https://mpago.la/mateo.romero915" target="_blank" style="font-size:0.85rem">mateo.romero915</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════ PÁGINA ADMIN ═══════════ -->
+<div class="page" id="page-admin-page">
+  <section style="padding-top:3rem">
+    <div class="section-header">
+      <div class="eyebrow">Panel de administración</div>
+      <h2>⚙️ Admin EPSILIUS</h2>
+    </div>
+    <div class="admin-grid">
+      <!-- Subir producto -->
+      <div class="admin-card" style="grid-column:1/-1">
+        <h3>➕ Publicar nueva herramienta</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Título *</label>
+            <input type="text" id="adm-title" placeholder="Nombre de la herramienta">
+          </div>
+          <div class="form-group">
+            <label>Precio (ARS) — 0 = Gratis</label>
+            <input type="number" id="adm-price" placeholder="0" min="0">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Categoría</label>
+            <select id="adm-category">
+              <option value="programa">🖥️ Programa</option>
+              <option value="extension">🧩 Extensión</option>
+              <option value="herramienta">🔧 Herramienta</option>
+              <option value="archivo">📁 Archivo</option>
+              <option value="otro">✨ Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Versión</label>
+            <input type="text" id="adm-version" placeholder="1.0.0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Descripción *</label>
+          <textarea id="adm-desc" placeholder="Describí la herramienta, qué hace, para qué sirve…"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Tags (separados por coma)</label>
+          <input type="text" id="adm-tags" placeholder="windows, automatización, productividad">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>📎 Archivo de la herramienta</label>
+            <div class="upload-area" onclick="document.getElementById('adm-file').click()">
+              <input type="file" id="adm-file">
+              <div>🖱️ Clic para subir archivo</div>
+              <div id="adm-file-name" style="font-size:0.8rem;color:var(--accent2);margin-top:0.3rem"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>🖼️ Imagen del producto</label>
+            <div class="upload-area" onclick="document.getElementById('adm-image').click()">
+              <input type="file" id="adm-image" accept="image/*">
+              <div>🖱️ Clic para subir imagen</div>
+              <div id="adm-image-name" style="font-size:0.8rem;color:var(--accent2);margin-top:0.3rem"></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Link externo de descarga (opcional)</label>
+          <input type="url" id="adm-downloadurl" placeholder="https://…">
+        </div>
+        <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;cursor:pointer">
+          <input type="checkbox" id="adm-featured"> Destacar en inicio
+        </label>
+        <button class="btn btn-primary" onclick="uploadProduct()" style="width:100%">🚀 Publicar herramienta</button>
+      </div>
+
+      <!-- Lista de productos admin -->
+      <div class="admin-card" style="grid-column:1/-1">
+        <h3>📦 Herramientas publicadas</h3>
+        <div id="admin-products-list">Cargando…</div>
+      </div>
+
+      <!-- Órdenes -->
+      <div class="admin-card" style="grid-column:1/-1">
+        <h3>💰 Órdenes de compra</h3>
+        <div id="admin-orders-list">Cargando…</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════ MODALES ═══════════ -->
+
+<!-- Login -->
+<div class="modal-overlay" id="login-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login-modal')">✕</button>
+    <h2>🔐 Ingresar a EPSILIUS</h2>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="login-email" placeholder="tu@email.com">
+    </div>
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" id="login-password" placeholder="Tu contraseña" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="btn btn-primary" onclick="doLogin()" style="width:100%">Ingresar</button>
+    <p style="text-align:center;margin-top:1rem;font-size:0.85rem;color:var(--text-dim)">
+      ¿No tenés cuenta? <a href="#" onclick="closeModal('login-modal');openModal('register-modal')">Registrate</a>
+    </p>
+  </div>
+</div>
+
+<!-- Registro -->
+<div class="modal-overlay" id="register-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('register-modal')">✕</button>
+    <h2>✨ Crear cuenta en EPSILIUS</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Usuario *</label>
+        <input type="text" id="reg-username" placeholder="Tu nombre de usuario">
+      </div>
+      <div class="form-group">
+        <label>País</label>
+        <input type="text" id="reg-country" placeholder="Argentina">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email *</label>
+      <input type="email" id="reg-email" placeholder="tu@email.com">
+    </div>
+    <div class="form-group">
+      <label>Contraseña *</label>
+      <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres" onkeydown="if(event.key==='Enter')doRegister()">
+    </div>
+    <button class="btn btn-primary" onclick="doRegister()" style="width:100%">Crear cuenta</button>
+    <p style="text-align:center;margin-top:1rem;font-size:0.85rem;color:var(--text-dim)">
+      ¿Ya tenés cuenta? <a href="#" onclick="closeModal('register-modal');openModal('login-modal')">Ingresá</a>
+    </p>
+  </div>
+</div>
+
+<!-- Comprar -->
+<div class="modal-overlay" id="buy-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('buy-modal')">✕</button>
+    <h2>🛒 Confirmar compra</h2>
+    <div id="buy-modal-content"></div>
+  </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">⚡ EPSILIUS</div>
+      <p class="footer-desc">Plataforma de herramientas, programas y extensiones. Creado para potenciar tu productividad.</p>
+      <p style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-dim)">📧 epsiliusoficial@gmail.com</p>
+    </div>
+    <div class="footer-col">
+      <h4>Plataforma</h4>
+      <a href="#" onclick="showPage('store')">Tienda</a>
+      <a href="#" onclick="showPage('chat-page')">Chat</a>
+      <a href="#" onclick="openModal('register-modal')">Registrarse</a>
+    </div>
+    <div class="footer-col">
+      <h4>Soporte</h4>
+      <a href="#" onclick="showPage('contact-page')">Contacto</a>
+      <a href="mailto:epsiliusoficial@gmail.com">Email directo</a>
+    </div>
+    <div class="footer-col">
+      <h4>Pagar</h4>
+      <a href="https://mpago.la/mateo.romero915" target="_blank">Mercado Pago</a>
+      <a href="mailto:epsiliusoficial@gmail.com">Otra forma</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2024 EPSILIUS — Todos los derechos reservados
+  </div>
+</footer>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
